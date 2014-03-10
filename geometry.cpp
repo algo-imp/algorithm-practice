@@ -14,6 +14,7 @@
 #include <stdlib.h>
 #include <cmath>
 #include "geometry.h"
+#include "point.h"
 
 using namespace std;
 
@@ -42,6 +43,24 @@ double Geometry::findPolygonArea(point vertex[], int numberOfVertices){
 	return abs(area/2);
 }
 
+// get the equation of the line passing two points
+void Geometry::getLineEquation(point p1, point p2, double &A, double &B, double &C){
+	A = p2._y - p1._y;
+	B = p1._x - p2._x;
+	C = A * p1._x + B * p1._y;
+}
+
+bool Geometry::getLineIntersection(Line line1, Line line2, point &interectPoint){
+	double det = line1.getA() * line2.getB() - line2.getA() * line1.getB();
+	if(det == 0){
+		return false;
+	}else{
+		interectPoint._x = (line2.getB() * line1.getC() - line1.getB() * line2.getC())/det;
+		interectPoint._y = (line1.getA() * line2.getC() - line2.getA() * line1.getC())/det;
+		return true;
+	}
+}
+
 void Geometry::testGeometry(){
 	point A(0, 0);
 	point B(0, 4);
@@ -56,4 +75,21 @@ void Geometry::testGeometry(){
 	vertex[2].setX(1);
 	vertex[2].setY(5);
 	cout << findPolygonArea(vertex, 3) << "\n";
+
+	double A1,B1,C1;
+	point X(0,0);
+	point Y(5,0);
+	getLineEquation(X, Y, A1, B1, C1);
+	double A2,B2,C2;
+	point Z(1,4);
+	point W(2,-4);
+	getLineEquation(Z, W, A2, B2, C2);
+	Line line1(A1,B1,C1);
+	Line line2(A2,B2,C2);
+	point intersect(0,0);
+	if(getLineIntersection(line1, line2, intersect)){
+		cout << "Intersect point: " << intersect.toString() << "\n";
+	}else{
+		cout << "Parallel\n";
+	}
 }
