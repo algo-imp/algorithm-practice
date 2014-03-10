@@ -14,6 +14,7 @@ class Geometry{
 public :
 	double linePointDist(point A, point B, point C, bool isSegment);
 	double findPolygonArea(point vertex[], int numberOfVertices);
+
 	void testGeometry();
 };
 
