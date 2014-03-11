@@ -8,6 +8,7 @@
 
 #include "point.h"
 #include <string>
+#include <math.h>
 
 point point::operator+(point other){
 	point ret;
@@ -30,6 +31,9 @@ double point::operator^(point other){
 	return _x * other._y - _y * other._x;
 }
 
+double point::distanceTo(point other){
+	return sqrt(pow(_x - other._x, 2) + pow(_y - other._y,2) );
+}
 string point::toString(){
 	string ret;
 	ret = ret + "("+ to_string(_x) + "," + to_string(_y) + ")";

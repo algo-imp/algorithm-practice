@@ -22,6 +22,7 @@ public:
 	point operator-(point);
 	double operator*(point); //dot product
 	double operator^(point); //cross product, for find area
+	double distanceTo(point); //distance to other point
 	string toString();
 };
 
