@@ -9,6 +9,8 @@ CPP_SRCS += \
 ../main.cpp \
 ../math.cpp \
 ../point.cpp \
+../srm166-div2-lev3.cpp \
+../srm211-div1-lev2.cpp \
 ../stldemo.cpp 
 
 OBJS += \
@@ -17,6 +19,8 @@ OBJS += \
 ./main.o \
 ./math.o \
 ./point.o \
+./srm166-div2-lev3.o \
+./srm211-div1-lev2.o \
 ./stldemo.o 
 
 CPP_DEPS += \
@@ -25,6 +29,8 @@ CPP_DEPS += \
 ./main.d \
 ./math.d \
 ./point.d \
+./srm166-div2-lev3.d \
+./srm211-div1-lev2.d \
 ./stldemo.d 
 
 

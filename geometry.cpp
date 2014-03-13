@@ -6,6 +6,7 @@
  *      Source: TopCoder Tutorials:
  *      	- Geometry Concepts: Basic concepts
  *      	- Geometry Concepts: Line Intersection and Its Applications
+ *      	- Geometry Concepts: Using Geometry in TopCoder problems
  */
 
 #include <iostream>
