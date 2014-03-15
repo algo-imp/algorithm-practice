@@ -21,4 +21,21 @@ public:
 	int test();
 };
 
+class pointInt{
+public:
+	int x, y;
+	pointInt(){x = 0; y=0;}
+	pointInt (int _x, int _y){x=_x; y=_y;}
+	pointInt operator+ (pointInt);
+	pointInt operator- (pointInt);
+	int operator* (pointInt); //dot product
+	int operator^ (pointInt);	//cross product
+	double findArea(vector<int>, vector<int>);
+};
+
+class ConvexPolygon{
+public:
+	double findArea(vector<int> x, vector<int> y);
+};
+
 #endif /* SRM_HEADER_H_ */

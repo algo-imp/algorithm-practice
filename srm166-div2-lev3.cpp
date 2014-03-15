@@ -6,37 +6,24 @@
 
 #include <iostream>
 #include <vector>
+#include <cmath>
+#include <cstdlib>
+#include "srm_header.h"
 
 using namespace std;
-
-class pointInt{
-public:
-	int x, y;
-	pointInt(){x = 0; y=0;}
-	pointInt (int _x, int _y){x=_x; y=_y;}
-	pointInt operator+ (pointInt);
-	pointInt operator- (pointInt);
-	int operator* (pointInt); //dot product
-	int operator^ (pointInt);	//cross product
-
-};
-
-
-class ConvexPolygon{
-public:
-	double findArea(vector<int> x, vector<int> y);
-};
 
 pointInt pointInt::operator+(pointInt other){
 	pointInt ret;
 	ret.x = x + other.x;
 	ret.y = y + other.y;
+	return ret;
 }
 
 pointInt pointInt::operator-(pointInt other){
 	pointInt ret;
 	ret.x = x - other.x;
 	ret.y = y - other.y;
+	return ret;
 }
 
 int pointInt::operator*(pointInt other){
@@ -48,6 +35,15 @@ int pointInt::operator^(pointInt other){
 }
 
 
-double findArea(vector<int> x, vector<int> y){
-	return 0;
+double ConvexPolygon::findArea(vector<int> x, vector<int> y){
+	pointInt start(x[0], y[0]);
+	int len = x.size();
+	double area = 0.0;
+	for(int i = 1;  i+1< len; i++){
+		pointInt first(x[i], y[i]);
+		pointInt second(x[i+1], y[i+1]);
+		area += (first - start) ^ (second - start);
+
+	}
+	return abs(area/2);
 }
