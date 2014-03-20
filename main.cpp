@@ -12,7 +12,12 @@ int main(){
 	/*
 	Geometry g;
 	g.testGeometry();
-	*/
+
 	grafixMask g;
 	g.test();
+
+
+	PathFinding pf;
+	pf.test();
+	*/
 }

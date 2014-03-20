@@ -36,6 +36,15 @@ public:
 class ConvexPolygon{
 public:
 	double findArea(vector<int> x, vector<int> y);
+
+};
+
+
+
+class PathFinding{
+public:
+	int minTurns(vector<string> board);
+	void test();
 };
 
 #endif /* SRM_HEADER_H_ */
