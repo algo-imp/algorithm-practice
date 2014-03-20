@@ -1,1 +1,0 @@
-math.d: ../math.cpp

@@ -1,1 +1,0 @@
-stldemo.d: ../stldemo.cpp

@@ -1,1 +1,0 @@
-dijkstra.d: ../dijkstra.cpp
