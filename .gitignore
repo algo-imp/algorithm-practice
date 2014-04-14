@@ -23,3 +23,6 @@
 # Others
 *.dSYM
 *.d
+
+MinCostMaxFlow.cpp
+srm200-div1-lev3-graduation.cpp
