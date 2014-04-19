@@ -6,7 +6,6 @@
  *      Problem details: http://community.topcoder.com/stat?c=problem_statement&pm=1889&rd=4709
  */
 
-#include <stdio.h>
 #include <iostream>
 #include <vector>
 #include <string>
@@ -26,7 +25,6 @@ long AvoidRoads::numWays(int width, int height, vector<string> bad){
 	bool badHorizontal[width+1][height+1];
 
 	for(int i = 0; i <= width; i++){
-
 		for(int j = 0 ; j <= height; j++){
 			badVertical[i][j] = false;
 			badHorizontal[i][j] = false;
@@ -50,8 +48,12 @@ long AvoidRoads::numWays(int width, int height, vector<string> bad){
 	long res [width+1][height+1];
 	res[0][0] = 1;
 	for(int i = 0; i<= width; i++ ){
-
 		for(int j = 0; j <= height; j++){
+			//don't override the base case
+			if((i == 0) && (j == 0)){
+				continue;
+			}
+
 			long temp = 0;
 			if(i>0 && !badHorizontal[i-1][j] )	{
 				temp += res[i-1][j];
@@ -60,13 +62,11 @@ long AvoidRoads::numWays(int width, int height, vector<string> bad){
 				temp += res[i][j-1];
 			}
 			cout << "temp = " << temp << "\n";
-			if(i!=0 && j!=0) res[i][j] = temp;
+			res[i][j] = temp;
 			cout << "Ways to (" << i << "," << j << ") is: " << res[i][j] << "\n";
 		}
 	}
 	return res[width][height];
-
-	//return 0;
 }
 
 int main(){
