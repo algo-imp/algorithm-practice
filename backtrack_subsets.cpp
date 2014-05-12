@@ -1,5 +1,5 @@
 /*
- * subset_backtrack.cpp
+ * backtrack_subsets.cpp
  *	Reference: Chapter 7 - The Algorithm Design Manual
  *  Created on: May 12, 2014
  *      Author: vietnguyen

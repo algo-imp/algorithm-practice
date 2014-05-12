@@ -23,6 +23,7 @@ C_UPPER_DEPS :=
 
 # Every subdirectory with source files must be described here
 SUBDIRS := \
+topcoder-SRM-615 \
 . \
 srm181-div1-lev3.o.dSYM/Contents/Resources/DWARF \
 

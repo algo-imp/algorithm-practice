@@ -9,6 +9,7 @@ RM := rm -rf
 # All of the sources participating in the build are defined here
 -include sources.mk
 -include subdir.mk
+-include topcoder-SRM-615/subdir.mk
 -include srm181-div1-lev3.o.dSYM/Contents/Resources/DWARF/subdir.mk
 -include objects.mk
 
