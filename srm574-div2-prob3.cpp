@@ -12,7 +12,79 @@ using namespace std;
 
 class PolygonTraversal2{
 public:
-	int backtrack(vector<int> ps, bool visited[] , int nTarget){
+
+	/* TOPCODER solution */
+	int N;
+	bool visited[14];
+	int points[13];
+
+	// This handy function returns true if the segment x -> y
+	// intersects with any of the segments described by :
+	// points[0] -> points[1], points[1] -> points[2], ...
+	bool cross(int x, int y, int t)
+	{
+	    // Segment x -> y is the same as y -> x, pick the one with (x < y).
+	    if (x > y) {
+	        swap(x, y);
+	    }
+	    bool good = false;
+	    for (int i = 0; i + 1 < t; i++) {
+	        // Ignore segments that share a point with x -> y:
+	        if ( points[i] == x || points[i+1] == x) continue;
+	        if ( points[i] == y || points[i+1] == y) continue;
+
+	        // p1 is true if points[i] belongs to the first partition.
+	        bool p1 = ( x < points[i] && points[i] < y );
+	        // p2 is true if points[i] belongs to the first partition.
+	        bool p2 = ( x < points[i+1] && points[i+1] < y );
+
+	        // Exactly one of p1,p2 must be true
+	        good |= ( p1 != p2  );
+	    }
+	    return good;
+	}
+
+	// Use backtracking to pick the order of the points in the traversal
+	// Crop when the new segment does not intersect with a previous one.
+	int rec(int t)
+	{
+	    if (t == N) {
+	        // can we go from points[N-1] to points[0] crossing something?
+	        return ( cross( points[t - 1], points[0], t) ? 1 : 0);
+	        // If so, we have found a good way to do it.
+	    } else {
+	        int res = 0;
+	        for (int i = 1; i <= N; i++) {
+	            // Pick a good finish point i for the next segment:
+	            if ( !visited[i] && cross(points[t-1], i, t) ) {
+	                // do not pick a point that was visited before.
+	                // the new segment must intersect with at least one segment.
+
+	                //  Temporarily mark the point as visited and add it to
+	                // the array.
+	                visited[i] = true;
+	                points[t] = i;
+	                res += rec(t + 1);
+	                // backtrack:
+	                visited[i] = false;
+	            }
+	        }
+	        return res;
+	    }
+	}
+
+	int count(int N, vector <int> points)
+	{
+	    this->N = N;
+	    fill(visited, visited + 14, false);
+	    for (int i=0; i<points.size(); i++) {
+	        visited[ points[i] ] = true;
+	        this->points[i] = points[i];
+	    }
+	    return rec( points.size() );
+	}
+/* My solution - NOT WORK
+ * 	int backtrack(vector<int> ps, bool visited[] , int nTarget){
 
 		int curVertex = ps[ps.size()-1];
 		cout << "In backtrack: " <<  curVertex << ", " << ps.size() << ", " << nTarget << "\n";
@@ -73,4 +145,6 @@ public:
 		return backtrack(points, visited, N);
 
 	}
+ */
+
 };
