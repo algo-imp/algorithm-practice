@@ -26,5 +26,10 @@
 *.dSYM
 *.d
 
+
+# Emacs
+*~
+
+# Specific files 
 MinCostMaxFlow.cpp
 srm200-div1-lev3-graduation.cpp
